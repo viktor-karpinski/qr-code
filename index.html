@@ -14,16 +14,32 @@
         <form id="generate">
             <input type="text" id="text" placeholder="https://viktorkarpinski.com">
             
-            <input type="color" id="dark" name="favcolor" value="#000000">
-            <input type="color" id="light" name="favcolor" value="#ffffff">
+            <label for="dark" class="color-wrapper">
+                <p>
+                    code color
+                </p>
+                <div class="color-box">
+                    <input type="color" id="dark" value="#000000">
+                </div>
+            </label>
 
-            <input type="range" id="x" min="100" max="300">
-            <input type="range" id="y" min="100" max="300">
+            <label for="dark" class="color-wrapper">
+                <p>
+                    code color
+                </p>
+                <div class="color-box white">
+                    <input type="color" id="light" value="#ffffff">
+                </div>
+            </label>
+
+            <input type="range" id="x" min="64" max="255">
+            <input type="range" id="y" min="64" max="255">
             <button type="submit">
                 generate
             </button>
+            <div id="qrcode"></div>
+
         </form>
-        <div id="qrcode"></div>
     </main>
 
     <script src="index.js"></script>

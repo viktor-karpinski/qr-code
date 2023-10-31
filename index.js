@@ -16,9 +16,8 @@ window.onload = () => {
     colorLight: light.value,
     correctLevel: QRCode.CorrectLevel.H,
   });
+  generate.addEventListener("submit", generateQrCode);
 };
-
-generate.addEventListener("submit", generateQrCode);
 
 function generateQrCode(ev) {
   ev.preventDefault();
@@ -35,3 +34,11 @@ function generateQrCode(ev) {
     });
   }, 1000);
 }
+
+dark.onchange = (ev) => {
+  ev.target.parentNode.style.backgroundColor = dark.value;
+};
+
+light.onchange = (ev) => {
+  ev.target.parentNode.style.backgroundColor = light.value;
+};
