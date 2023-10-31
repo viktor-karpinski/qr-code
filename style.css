@@ -1,0 +1,22 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+main {
+    padding: 2rem;
+}
+
+#generate {
+    width: min(100%, 40rem);
+
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+#text {
+    font-size: 1.8rem;
+}
