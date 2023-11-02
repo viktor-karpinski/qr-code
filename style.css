@@ -28,9 +28,15 @@ p, input, label, button, span {
 }
 
 main {
-    padding: 2rem;
+    padding: 4rem 2rem;
     background-color: var(--bg);
     min-height: 100vh;
+}
+
+h1 {
+    font-size: 4rem;
+    text-align: center;
+    margin-bottom: 4rem;
 }
 
 #generate {
