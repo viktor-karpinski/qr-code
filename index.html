@@ -7,38 +7,84 @@
     <title>free QR-code generator</title>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script>
+
     <link rel="stylesheet" href="style.css">
+
+    <meta description="Free QR-code generator">
 </head>
 <body>
     <main>
         <form id="generate">
-            <input type="text" id="text" placeholder="https://viktorkarpinski.com">
+            <article>
+                <input type="text" id="text" placeholder="https://viktorkarpinski.com" autocomplete="off">
             
-            <label for="dark" class="color-wrapper">
-                <p>
-                    code color
-                </p>
-                <div class="color-box">
-                    <input type="color" id="dark" value="#000000">
+                <label for="dark" class="color-wrapper">
+                    <p>
+                        code color
+                    </p>
+                    <div class="color-box">
+                        <input type="color" id="dark" value="#000000">
+                    </div>
+                </label>
+    
+                <label for="dark" class="color-wrapper">
+                    <p>
+                        background color
+                    </p>
+                    <div class="color-box white">
+                        <input type="color" id="light" value="#ffffff">
+                    </div>
+                </label>
+    
+                <label for="x" class="range-wrapper">
+                    <p>
+                        width: <span id="xinfo">160px</span>
+                    </p>
+                    <input type="range" id="x" min="64" max="255">
+                </label>
+    
+                <label for="y" class="range-wrapper">
+                    <p>
+                        height: <span id="yinfo">160px</span>
+                    </p>
+                    <input type="range" id="y" min="64" max="255">
+                </label>
+                
+                <button type="submit">
+                    generate
+                </button>
+            </article>
+
+            <article>
+                <div id="download">
+                    <div id="qrcode-container">
+                        <div id="qrcode"></div>
+                    </div>
                 </div>
-            </label>
+                
+                
 
-            <label for="dark" class="color-wrapper">
-                <p>
-                    code color
-                </p>
-                <div class="color-box white">
-                    <input type="color" id="light" value="#ffffff">
+                <div id="save-wrapper">
+                    <label for="padding" class="range-wrapper">
+                        <p>
+                            padding: <span id="paddinginfo">10px</span>
+                        </p>
+                        <input type="range" id="padding" min="0" max="20">
+                    </label>
+        
+                    <label for="border" class="range-wrapper">
+                        <p>
+                            border-radius: <span id="borderinfo">10px</span>
+                        </p>
+                        <input type="range" id="border" min="0" max="20">
+                    </label>
+        
+                    <button type="button" id="save">
+                        save
+                    </button>
                 </div>
-            </label>
-
-            <input type="range" id="x" min="64" max="255">
-            <input type="range" id="y" min="64" max="255">
-            <button type="submit">
-                generate
-            </button>
-            <div id="qrcode"></div>
-
+            </article>
         </form>
     </main>
 
