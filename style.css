@@ -73,6 +73,7 @@ h1 {
     border: 0px solid var(--main);
     background-color: white;
     border-radius: 5px;
+    touch-action: manipulation;
 }
 
 .tipp {
@@ -164,6 +165,10 @@ button, .button {
     padding: 1rem;
     background-color: white;
     border-radius: 1rem;
+}
+
+#qrcode-container {
+    background-color: transparent;
 }
 
 #save-wrapper {

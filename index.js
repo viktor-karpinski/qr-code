@@ -34,12 +34,16 @@ window.onload = () => {
 
 function generateQrCode(ev) {
   ev.preventDefault();
+  generate.reset();
+  dark.parentNode.style.backgroundColor = dark.value;
+  light.parentNode.style.backgroundColor = light.value;
   generateCode();
 }
 
 function generateCode() {
   qrcodebox.innerHTML = "";
   setTimeout(() => {
+    qrcodebox.innerHTML = "";
     let toConvert =
       text.value.length <= 0 ? "https://viktorkarpinski.com" : text.value;
     qrcode = new QRCode(document.getElementById("qrcode"), {
@@ -53,6 +57,10 @@ function generateCode() {
     qrcodebox.style.backgroundColor = light.value;
   }, 1000);
 }
+
+text.oninput = () => {
+  generateCode();
+};
 
 dark.oninput = (ev) => {
   ev.target.parentNode.style.backgroundColor = dark.value;
