@@ -21,7 +21,9 @@
         <form id="generate">
             <article>
                 <input type="text" id="text" placeholder="https://viktorkarpinski.com" autocomplete="off">
-            
+                <p class="tipp">
+                    tipp: use mailto or tel as a prefix! eg. tel:+48...
+                </p>
                 <label for="dark" class="color-wrapper">
                     <p>
                         code color
@@ -113,15 +115,24 @@
                     <input type="radio" id="medium" name="size">
                     <input type="radio" id="large" name="size">
                 </div>
-                <button>
+                <a href="https://www.paypal.com/paypalme/viktorkarpinski/1" target="_blank" class="button">
                     buy (<span id="money">1</span>€)
-                </button>
+                </a>
             </article>
 
             <p>
                 Hello, I'm <a href="https://viktorkarpinski.com" target="blank">Viktor Karpinski</a>, the creator of this service. Your support in the form of a coffee would be greatly appreciated!
             </p>
         </section>
+
+        <footer>
+            <a href="https://viktorkarpinski.com/imprint">
+                imprint
+            </a>
+            <a href="https://viktorkarpinski.com/data-protection">
+                data protection
+            </a>
+        </footer>
     </main>
 
     <script src="index.js"></script>

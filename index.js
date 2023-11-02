@@ -34,15 +34,16 @@ window.onload = () => {
 
 function generateQrCode(ev) {
   ev.preventDefault();
-
   generateCode();
 }
 
 function generateCode() {
   qrcodebox.innerHTML = "";
   setTimeout(() => {
+    let toConvert =
+      text.value.length <= 0 ? "https://viktorkarpinski.com" : text.value;
     qrcode = new QRCode(document.getElementById("qrcode"), {
-      text: text.value,
+      text: toConvert,
       width: parseInt(x.value),
       height: parseInt(y.value),
       colorDark: dark.value,
@@ -53,32 +54,44 @@ function generateCode() {
   }, 1000);
 }
 
-dark.onchange = (ev) => {
+dark.oninput = (ev) => {
   ev.target.parentNode.style.backgroundColor = dark.value;
+};
+
+dark.onchange = (ev) => {
   generateCode();
+};
+
+light.oninput = (ev) => {
+  ev.target.parentNode.style.backgroundColor = light.value;
 };
 
 light.onchange = (ev) => {
-  ev.target.parentNode.style.backgroundColor = light.value;
   generateCode();
+};
+
+x.oninput = () => {
+  xinfo.innerText = x.value + "px";
 };
 
 x.onchange = () => {
-  xinfo.innerText = x.value + "px";
   generateCode();
+};
+
+y.oninput = () => {
+  yinfo.innerText = y.value + "px";
 };
 
 y.onchange = () => {
-  yinfo.innerText = y.value + "px";
   generateCode();
 };
 
-border.onchange = () => {
+border.oninput = () => {
   borderinfo.innerText = border.value + "px";
   qrcodebox.style.borderRadius = border.value + "px";
 };
 
-padding.onchange = () => {
+padding.oninput = () => {
   paddinginfo.innerText = padding.value + "px";
   qrcodebox.style.padding = padding.value + "px";
 };
@@ -102,4 +115,6 @@ function changeCoffee(ev) {
   for (let i = 0; i < 3; i++) coffee[i].classList.remove("selected");
   currentCoffee.classList.add("selected");
   document.getElementById("money").innerText = currentCoffee.dataset.money;
+  let btn = document.querySelector(".button");
+  btn.href = btn.href.replace(/\/\d+$/, "/" + currentCoffee.dataset.money);
 }
