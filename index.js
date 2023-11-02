@@ -10,12 +10,13 @@ let generate = document.getElementById("generate"),
   light = document.getElementById("light"),
   qrcodebox = document.getElementById("qrcode"),
   qrcodewrapper = document.getElementById("qrcode-container"),
-  savebox = document.getElementById("save-wrapper"),
+  savebtn = document.getElementById("save"),
   qrcode = null,
   padding = document.getElementById("padding"),
   paddinginfo = document.getElementById("paddinginfo"),
   border = document.getElementById("border"),
-  borderinfo = document.getElementById("borderinfo");
+  borderinfo = document.getElementById("borderinfo"),
+  coffee = document.getElementsByClassName("coffee-label");
 
 window.onload = () => {
   qrcode = new QRCode(document.getElementById("qrcode"), {
@@ -27,6 +28,8 @@ window.onload = () => {
     correctLevel: QRCode.CorrectLevel.H,
   });
   generate.addEventListener("submit", generateQrCode);
+  savebtn.addEventListener("click", saveQrCode);
+  for (let i = 0; i < 3; i++) coffee[i].addEventListener("click", changeCoffee);
 };
 
 function generateQrCode(ev) {
@@ -47,7 +50,6 @@ function generateCode() {
       correctLevel: QRCode.CorrectLevel.H,
     });
     qrcodebox.style.backgroundColor = light.value;
-    savebox.style.display = "flex";
   }, 1000);
 }
 
@@ -81,7 +83,7 @@ padding.onchange = () => {
   qrcodebox.style.padding = padding.value + "px";
 };
 
-document.getElementById("save").addEventListener("click", function () {
+function saveQrCode() {
   domtoimage
     .toPng(document.getElementById("download"), {
       width: qrcodewrapper.offsetWidth,
@@ -93,4 +95,11 @@ document.getElementById("save").addEventListener("click", function () {
       link.href = dataUrl;
       link.click();
     });
-});
+}
+
+function changeCoffee(ev) {
+  let currentCoffee = ev.currentTarget;
+  for (let i = 0; i < 3; i++) coffee[i].classList.remove("selected");
+  currentCoffee.classList.add("selected");
+  document.getElementById("money").innerText = currentCoffee.dataset.money;
+}
